@@ -3,7 +3,8 @@ block_image_width=30;
 block_image_height=30;
 player_x=10;
 player_y=10;
-var player_objects="";
+var player_object="";
+var block_image_object="";
 
 function player_update(){
     fabric.Image.fromURL("player.png", function(Img) {
@@ -57,22 +58,22 @@ if(e.shiftKey==true && keyPressed=='77') {
 }
 
 if(keyPressed=='38'){
-    //up();
+    up();
     console.log("up");
 }
 
 if(keyPressed=='40'){
-    //down();
+    down();
     console.log("down");
 }
 
 if(keyPressed=='37'){
-    //left();
+    left();
     console.log("left");
 }
 
 if(keyPressed=='39'){
-    //right();
+    right();
     console.log("right");
 }
 
@@ -123,3 +124,42 @@ if(keyPressed=='67'){
 
 }
 
+function up(){
+    if(player_y>=0){
+        player_y=player_y-block_image_height;
+        console.log("block_image_height= "+ block_image_height);
+        console.log("when up arrow is pressed, x = "+player_x+" ,y= "+player_y);
+        canvas.remove(player_object);
+        player_update();
+    }
+}
+
+function down(){
+    if(player_y<=500){
+        player_y=player_y+block_image_height;
+        console.log("block_image_height= "+ block_image_height);
+        console.log("when down arrow is pressed, x = "+player_x+" ,y= "+player_y);
+        canvas.remove(player_object);
+        player_update();
+    }
+}
+
+function left(){
+    if(player_x>=0){
+        player_x=player_x-block_image_width;
+        console.log("block_image_height= "+ block_image_width);
+        console.log("when left arrow is pressed, x = "+player_x+" ,y= "+player_y);
+        canvas.remove(player_object);
+        player_update();
+    }
+}
+
+function right(){
+    if(player_x<=850){
+        player_x=player_x+block_image_width;
+        console.log("block_image_height= "+ block_image_width);
+        console.log("when right arrow is pressed, x = "+player_x+" ,y= "+player_y);
+        canvas.remove(player_object);
+        player_update();
+    }
+}
